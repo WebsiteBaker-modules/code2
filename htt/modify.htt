@@ -1,12 +1,28 @@
 <!-- BEGIN main_block -->
 
+<link rel=stylesheet href="{WB_URL}/modules/code2/codemirror/lib/codemirror.css">
+<link rel=stylesheet href="{WB_URL}/modules/code2/codemirror/theme/default_0.css">
+<link rel=stylesheet href="{WB_URL}/modules/code2/codemirror/theme/default_1.css">
+<link rel=stylesheet href="{WB_URL}/modules/code2/codemirror/theme/default_2.css">
+<link rel=stylesheet href="{WB_URL}/modules/code2/codemirror/theme/default_3.css">
+<link rel=stylesheet href="{WB_URL}/modules/code2/codemirror/theme/default_4.css">
+<script src="{WB_URL}/modules/code2/codemirror/lib/codemirror.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/xml/xml.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/javascript/javascript.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/css/css.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/clike/clike.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/php/php.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/sql/sql.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="{WB_URL}/modules/code2/codemirror/addon/edit/matchbrackets.js"></script>
+
 <form name="codeform{SECTION_ID}" class="whatis_{WHATIS}_{SECTION_ID}" action="{WB_URL}/modules/code2/save.php" method="post">
 
 <input type="hidden" name="page_id" value="{PAGE_ID}" />
 <input type="hidden" name="section_id" value="{SECTION_ID}" />
 <input type="hidden" name="code2_hash" value="{CODE2_HASH}" />
 {FTAN}
-<select name="whatis" onchange="javascript:changecode{SECTION_ID}()">{WHATISSELECT}</select><span style="margin-left:20px">{MODES}: <select name='mode' style="margin-left:5px;width:100px;" onchange="change_mode{SECTION_ID}(this);">{MODE}</select></span><span id="infotext_output{SECTION_ID}" style="margin-left:20px;"></span>
+<select name="whatis" onchange="javascript:changecode{SECTION_ID}()">{WHATISSELECT}</select><span id="infotext_output{SECTION_ID}" style="margin-left:20px;"></span>
 <textarea id="content{SECTION_ID}" name="content" class="content_{WHATIS}" style="margin-top:5px;width:100%;" rows="0" cols="0">{CONTENT}</textarea>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
@@ -20,29 +36,54 @@
 </tr>
 </table>
 </form>
+
+<style>
+ .CodeMirror { height: auto; border: 1px solid #ddd; font-size: 12px;}
+ .CodeMirror-scroll { max-height: 200px; }
+ .CodeMirror pre { padding-left: 7px; line-height: 1.25; }
+</style>
 <script language="JavaScript" type="text/javascript">
 <!--
+
+function getModeString(whatis) {
+        var t = "";
+        switch(whatis) {
+                case '1':
+                        t = "text/html";
+                        break;
+                case '2': t = "text/javascript";
+                        break;
+                case '3': t = "text";
+                        break;
+                case '4': t = "text";
+                        break;
+                default:
+                        t = "application/x-httpd-php-open";
+        }
+        
+        return t;
+}
+
+
+  var editor = CodeMirror.fromTextArea(document.getElementById("content{SECTION_ID}"), {
+    lineNumbers: true,
+    mode: "text/html",
+    matchBrackets: true,
+  });
+
 function changecode{SECTION_ID}() {
                 
         var whatis = document.codeform{SECTION_ID}.whatis.options[document.codeform{SECTION_ID}.whatis.selectedIndex].value;
         var t = gethinttext(whatis, '{LANGUAGE}');        
         document.getElementById("infotext_output{SECTION_ID}").innerHTML  = t;
         document.getElementById("content{SECTION_ID}").className = "content_"+whatis;
+        editor.setOption("mode", getModeString(whatis));
+        editor.setOption("theme", "default_"+whatis);
 } 
+
 changecode{SECTION_ID}();
 
-function change_mode{SECTION_ID} (aRef) {
-        var ref = document.getElementById("content{SECTION_ID}");
-        if (ref) {
-                var new_height = (aRef.selectedIndex == 1) ? "400px" : "40px";
-                ref.style.height=new_height;
-        }
-}
 
-var ref = document.getElementById("content{SECTION_ID}");
-if (ref) {
-        ref.style.height= ({MODE_} == 1) ? "400px" : "40px";
-}
 //-->
 </script>
 <p>&nbsp;</p>

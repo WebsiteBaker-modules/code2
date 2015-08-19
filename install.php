@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -11,9 +11,16 @@
  *
  **/
 
-/**
- *        prevent this file from being accessed directly
- */
+
+/* -------------------------------------------------------- */
+// Must include code to stop this file being accessed directly
+if(!defined('WB_PATH')) {
+        require_once(dirname(dirname(__FILE__)).'/framework/globalExceptionHandler.php');
+        throw new IllegalFileException();
+}
+/* -------------------------------------------------------- */
+
+
 if(!defined('WB_PATH')) die(header('Location: ../../index.php'));
 
 $table = TABLE_PREFIX."mod_code2";
@@ -40,30 +47,14 @@ $query .= " PRIMARY KEY ( `section_id` ) )";
 $all_jobs[] = $query;
 
 /**
- *        Preparing the db-connector
- */
-$use_job_numbers = false;
-
-$c_vars = get_class_vars ('database');
-if ( true === in_array("log_querys", $c_vars) ) {
-        $database->log_querys = true;
-        $database->log_path = WB_PATH."/logs/";
-        $database->log_filename = "code2_install.log";
-        
-        $use_job_numbers = true;
-        $counter = 103000;
-}
-
-/**
  *        Processing the jobs/querys all in once
  */
-foreach( $all_jobs as $q ) {
-        
-        $use_job_numbers === false ? $database->query($q) : $database->query($q, $counter++);
-        
-        if ( $database->is_error() ) 
-                $admin->print_error($database->get_error(), $js_back);
+$errors= array();
+foreach( $all_jobs as &$q ) {
+        $database->query($q);
 
+        if ( $database->is_error() )  $errors[] $database->get_error();
 }
 
-?>
+if (count($errors) > 0)        $admin->print_error( implode("<br />", $errors), $js_back);
+

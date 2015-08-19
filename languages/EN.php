@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -11,15 +11,19 @@
  *
  **/
 
+/**
+ *        English module description
+ *
+ */
+
+$module_description = This module allows you to execute PHP, HTML, Javascript commands and internal comments (<span style="color:#FF0000;">limit access to users you trust!</span>);
+
 $MOD_CODE2 = array (
         'PHP'        => "PHP",
         'HTML'        => "HTML",
         'JAVASCRIPT'        => "Javascript",
         'INTERNAL'        => "Internal Comment",
-        'ADMIN'        => "Admin Comment",
-        'SMART'        => "smart",
-        'FULL'        => "full",
-        'MODE'        => "Mode"
+        'ADMIN'        => "Admin Comment"
 );
 
 ?>

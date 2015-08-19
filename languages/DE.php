@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -23,9 +23,6 @@ $MOD_CODE2 = array (
         'HTML'        => "HTML",
         'JAVASCRIPT' => "Javascript",
         'INTERNAL'        => "Interner Kommentar",
-        'ADMIN'        => "Admin Kommentar",
-        'SMART'        => "kleine Box",
-        'FULL'        => "gro&szlig;e Box",
-        'MODE'        => "Modus"
+        'ADMIN'        => "Admin Kommentar"
 );
 ?>

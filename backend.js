@@ -1,8 +1,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -20,15 +20,44 @@ function gethinttext(whatis, lang) {
                                         break;
                                 case '2': t = "Javascript: <span class='info_not'>&lt;script type=&quot;text/javascript&quot;&gt;</span><b> Ihre Eingabe </b><span class='info_not'>&lt;/script&gt;</span>";
                                         break;
-                                case '3': t = "Interner Kommentar; erscheint nicht auf der Website.";
+                                case '3': t = "Interner Kommentar: erscheint nicht auf der Website.";
                                         break;
-                                case '4': t = "<font color='#990000'>Wie interner Kommentar, aber k&ouml;nnen nur von Admins bearbeitet werden.</font>";
+                                case '4': t = "<font color='#990000'>Admin Kommentar: Wie interner Kommentar, aber k&ouml;nnen nur von Admins bearbeitet werden.</font>";
                                         break;
                                 default:
                                         t = "PHP: <span class='info_not'>&lt;?php</span><b> Ihre Eingabe </b><span class='info_not'> ?&gt;</span>";
                         }
                         break;
         
+                case 'FR':
+                        switch(whatis) {
+                                case '1':        t = "HTML: <b> votre entr&eacut;e </b>";
+                                        break;
+                                case '2': t = "Javascript: <span class='info_not'>&lt;script type=&quot;text/javascript&quot;&gt;</span><b> votre entr&eacut;e </b><span class='info_not'>&lt;/script&gt;</span>";
+                                        break;
+                                case '3': t = "Commentaire interne: pour les notes internes uniquement, ne semble pas sur le site";
+                                        break;
+                                case '4': t = "<font color='#990000'>Commentaire admin: Comme commentaire interne, mais seulement un administrateur peut modifier cette
+</font>";
+                                        break;
+                                default:
+                                        t = "PHP: <span class='info_not'>&lt;?php</span><b> votre entr&eacut;e </b><span class='info_not'> ?&gt;</span>";
+                        }
+                                                
+                case 'IT':
+                        switch(whatis) {
+                                case '1':        t = "HTML: <b> il Suo contributo </b>";
+                                        break;
+                                case '2': t = "Javascript: <span class='info_not'>&lt;script type=&quot;text/javascript&quot;&gt;</span><b> il Suo contributo </b><span class='info_not'>&lt;/script&gt;</span>";
+                                        break;
+                                case '3': t = "Commento interna: per le note interne solo, non appare sul sito web";
+                                        break;
+                                case '4': t = "<font color='#990000'>Commento admin: Mi piace Commento interno, ma solo un amministratore puo modificare questo</font>";
+                                        break;
+                                default:
+                                        t = "PHP: <span class='info_not'>&lt;?php</span><b> il Suo contributo </b><span class='info_not'> ?&gt;</span>";
+                        }
+
                 default:
                         switch(whatis) {
                                 case '1':        t = "HTML: <b>your input</b>";
@@ -37,7 +66,7 @@ function gethinttext(whatis, lang) {
                                         break;
                                 case '3': t = "Internal Comment: for internal notes only, does not appear on website";
                                         break;
-                                case '4': t = "<font color='#990000'>(HTML) Like Internal Comment, but only an admin can edit this.</font>";
+                                case '4': t = "<font color='#990000'>Admin Comment: Like Internal Comment, but only an admin can edit this.</font>";
                                         break;
                                 default:
                                         t = "PHP: <span class='info_not'>&lt;?php</span><b> your input </b><span class='info_not'> ?&gt;</span>";

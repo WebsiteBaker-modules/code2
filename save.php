@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -11,10 +11,19 @@
  *
  **/
 
-
 require('../../config.php');
 
-if(!defined('WB_PATH')) exit('Direct access to this file is not allowed');
+
+
+/* -------------------------------------------------------- */
+// Must include code to stop this file being accessed directly
+if(!defined('WB_PATH')) {
+        require_once(dirname(dirname(__FILE__)).'/framework/globalExceptionHandler.php');
+        throw new IllegalFileException();
+}
+/* -------------------------------------------------------- */
+
+
 
 /**
  *        Include WB admin wrapper script
@@ -73,7 +82,7 @@ if (true === method_exists($admin, 'checkFTAN')) {
                         // faild
                 } else {
                         if ($_POST[ $name ] != $str) {
-                                // faild
+                                // failed
                         } else {
                                 // ok! seems to be ok
                                 $tan_ok = true;
@@ -98,11 +107,12 @@ if( false === $tan_ok) die( header('Location: ../../index.php') );
 if ( isset($_POST['content']) ) {
         $tags                = array('<?php', '?>' , '<?');
         $content        = $admin->add_slashes(str_replace($tags, '', $_POST['content']));
-        $whatis                = $_POST['whatis'] + ($_POST['mode'] * 10);
-
+        $whatis                = $_POST['whatis']; 
+        if (($whatis < 0) || ($whatis > 4)) $whatis = 0;
+        if (($whatis === 4) && (!in_array(1, $admin->get_groups_id() ))) $whatis=3;
         $fields = array(
                 'content'        => $content,
-                'whatis'        => $whatis,
+                'whatis'        => $whatis
         );
         
         $query = "UPDATE `".TABLE_PREFIX."mod_code2` SET ";

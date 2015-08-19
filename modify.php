@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -11,10 +11,15 @@
  *
  **/
 
-/**
- *        prevent this file from being accessed directly
- */
-if(!defined('WB_PATH')) exit('Direct access to this file is not allowed');
+
+/* -------------------------------------------------------- */
+// Must include code to stop this file being accessed directly
+if(!defined('WB_PATH')) {
+        require_once(dirname(dirname(__FILE__)).'/framework/globalExceptionHandler.php');
+        throw new IllegalFileException();
+}
+/* -------------------------------------------------------- */
+
 
 /**
  *        Load Language file
@@ -28,12 +33,13 @@ $template->set_file('page', 'htt/modify.htt');
 $template->set_block('page', 'main_block', 'main');
 
 // Get page content
-$query = "SELECT `content`, `whatis` FROM `".TABLE_PREFIX."mod_code2` WHERE `section_id`= '".$section_id."'";
+$query = "SELECT `content`, `whatis`"
+        . " FROM `".TABLE_PREFIX."mod_code2`"
+        . " WHERE `section_id`= '".$section_id."'";
 $get_content = $database->query($query);
 $content = $get_content->fetchRow( MYSQL_ASSOC );
 $whatis = (int)$content['whatis'];
 
-$mode = ($whatis >= 10) ? (int)($whatis / 10) : 0;
 $whatis = $whatis % 10;
 
 $groups = $admin->get_groups_id();
@@ -86,15 +92,6 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
                    $whatisselect .= '<option value="'.$i.'"'.$select.'>'.$whatisarray[$i].'</option>'."\n";
           }
     
-    $modes_names = array('smart', 'full');
-    $modes = array();
-    foreach($modes_names as $item) $modes[] = $MOD_CODE2[strtoupper($item)];
-    $mode_options = "";
-    $counter = 0;
-    foreach($modes as $item) {
-            $mode_options .= "<option value='".$counter."' ".(($counter==$mode)?" selected='selected'":"").">".$item."</option>";
-                $counter++;
-        }
         // Insert vars
         $template->set_var(array(
                         'PAGE_ID' => $page_id,
@@ -105,10 +102,7 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
                         'WHATISSELECT' => $whatisselect,
                         'TEXT_SAVE' => $TEXT['SAVE'],
                         'TEXT_CANCEL' => $TEXT['CANCEL'],
-                        'MODE'        => $mode_options,
-                        'MODE_' => $mode,
                         'LANGUAGE' => LANGUAGE,
-                        'MODES'        => $MOD_CODE2['MODE'],
                         'CODE2_HASH' => $hash_id,
                         'FTAN'        => $tan
                 )

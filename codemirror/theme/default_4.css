@@ -1,0 +1,34 @@
+.cm-s-default_4.CodeMirror {background: #FFCC33;}
+.cm-s-default_4 .cm-header {color: blue;}
+.cm-s-default_4 .cm-quote {color: #090;}
+.cm-negative {color: #d44;}
+.cm-positive {color: #292;}
+.cm-header, .cm-strong {font-weight: bold;}
+.cm-em {font-style: italic;}
+.cm-link {text-decoration: underline;}
+.cm-strikethrough {text-decoration: line-through;}
+
+.cm-s-default_4 .cm-keyword {color: #708;}
+.cm-s-default_4 .cm-atom {color: #219;}
+.cm-s-default_4 .cm-number {color: #164;}
+.cm-s-default_4 .cm-def {color: #00f;}
+.cm-s-default_4 .cm-variable,
+.cm-s-default_4 .cm-punctuation,
+.cm-s-default_4 .cm-property,
+.cm-s-default_4 .cm-operator {}
+.cm-s-default_4 .cm-variable-2 {color: #05a;}
+.cm-s-default_4 .cm-variable-3 {color: #085;}
+.cm-s-default_4 .cm-comment {color: #a50;}
+.cm-s-default_4 .cm-string {color: #a11;}
+.cm-s-default_4 .cm-string-2 {color: #f50;}
+.cm-s-default_4 .cm-meta {color: #555;}
+.cm-s-default_4 .cm-qualifier {color: #555;}
+.cm-s-default_4 .cm-builtin {color: #30a;}
+.cm-s-default_4 .cm-bracket {color: #997;}
+.cm-s-default_4 .cm-tag {color: #170;}
+.cm-s-default_4 .cm-attribute {color: #00c;}
+.cm-s-default_4 .cm-hr {color: #999;}
+.cm-s-default_4 .cm-link {color: #00c;}
+
+.cm-s-default_4 .cm-error {color: #f00;}
+.cm-invalidchar {color: #f00;}

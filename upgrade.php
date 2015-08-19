@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -12,10 +12,15 @@
  **/
 
 
-/**
- *        prevent this file from being accessed directly
- */
-if(!defined('WB_PATH')) die(header('Location: ../../index.php'));
+/* -------------------------------------------------------- */
+// Must include code to stop this file being accessed directly
+if(!defined('WB_PATH')) {
+        require_once(dirname(dirname(__FILE__)).'/framework/globalExceptionHandler.php');
+        throw new IllegalFileException();
+}
+/* -------------------------------------------------------- */
+
+
 
 $query = "show fields from `".TABLE_PREFIX."mod_code2`";
 
@@ -47,7 +52,7 @@ if ($database->is_error() ) {
 
                 } else {
 
-                        $admin->print_success( "Update Table for modul 'code2' with success." );
+                        $admin->print_success( "Update Table for module 'code2' with success." );
                 }
         }
 }

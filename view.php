@@ -2,8 +2,8 @@
 /**
  *
  *        @module       Code2
- *        @version      2.1.13
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support corrected by Martin Hecht 
+ *        @version      2.2.1
+ *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *      @license      GNU General Public License
  *        @platform     2.8.x
@@ -11,19 +11,34 @@
  *
  **/
 
+
+/* -------------------------------------------------------- */
+// Must include code to stop this file being accessed directly
+if(!defined('WB_PATH')) {
+        require_once(dirname(dirname(__FILE__)).'/framework/globalExceptionHandler.php');
+        throw new IllegalFileException();
+}
+/* -------------------------------------------------------- */
+
+
  
 /**
  *        Get content
  *
  */
-$get_content = $database->query("SELECT `content`, `whatis` FROM `".TABLE_PREFIX."mod_code2` WHERE `section_id`= '".$section_id."'");
-$fetch_content = $get_content->fetchRow();
+$query="SELECT `content`, `whatis`"
+        . " FROM `".TABLE_PREFIX."mod_code2`"
+        . " WHERE `section_id`= '".$section_id."'";
+$get_content = $database->query($query);
 
-$whatis = (int)($fetch_content['whatis'] % 10);
+if (($get_content) && ($get_content->numRows() > 0)) {
+    $fetch_content = $get_content->fetchRow( MYSQL_ASSOC );
 
-$content = $fetch_content['content'];
+    $whatis = (int)($fetch_content['whatis'] % 10);
 
-switch ($whatis) {
+    $content = $fetch_content['content'];
+
+    switch ($whatis) {
 
         case 0:        // PHP 
                 eval($content);
@@ -42,6 +57,10 @@ switch ($whatis) {
         case 4:
                 echo "";        //Keine Ausgabe: Kommentar
                 break;
+        default:
+                echo "Unknown type!";
+                break;
+    }
 }
 
 ?>
