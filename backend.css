@@ -1,10 +1,10 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.1
+ *        @version      2.2.4
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
- *      @license      GNU General Public License
+ *        @license      GNU General Public License
  *        @platform     2.8.x
  *        @requirements PHP 5.2.x and higher
  *
@@ -19,28 +19,28 @@
 
 .content_0 {
         width:100%;
-        height:380px;
+        height:400px;
         background-color: #E8F1F9;
 }
 .content_1 {
         width:100%;
-        height:380px;
+        height:400px;
         background-color: #E8F9E8;
 }
 .content_2 {
         width:100%;
-        height:220px;
+        height:400px;
         background-color: #F9E8EF;
 }
 .content_3 {
         width:100%;
-        height:100px;
+        height:400px;
         background-color: #FFFFD2;
 }
 
 .content_4 {
         width:100%;
-        height:200px;
+        height:400px;
         background-color: #FFCC33;
 }
 

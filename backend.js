@@ -1,10 +1,10 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.1
+ *        @version      2.2.4
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
- *      @license      GNU General Public License
+ *        @license      GNU General Public License
  *        @platform     2.8.x
  *        @requirements PHP 5.2.x and higher
  *
@@ -37,12 +37,12 @@ function gethinttext(whatis, lang) {
                                         break;
                                 case '3': t = "Commentaire interne: pour les notes internes uniquement, ne semble pas sur le site";
                                         break;
-                                case '4': t = "<font color='#990000'>Commentaire admin: Comme commentaire interne, mais seulement un administrateur peut modifier cette
-</font>";
+                                case '4': t = "<font color='#990000'>Commentaire admin: Comme commentaire interne, mais seulement un administrateur peut modifier cette</font>";
                                         break;
                                 default:
                                         t = "PHP: <span class='info_not'>&lt;?php</span><b> votre entr&eacut;e </b><span class='info_not'> ?&gt;</span>";
                         }
+                        break;
                                                 
                 case 'IT':
                         switch(whatis) {
@@ -57,6 +57,7 @@ function gethinttext(whatis, lang) {
                                 default:
                                         t = "PHP: <span class='info_not'>&lt;?php</span><b> il Suo contributo </b><span class='info_not'> ?&gt;</span>";
                         }
+                        break;
 
                 default:
                         switch(whatis) {

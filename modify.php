@@ -2,10 +2,10 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.1
+ *        @version      2.2.4
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
- *      @license      GNU General Public License
+ *        @license      GNU General Public License
  *        @platform     2.8.x
  *        @requirements PHP 5.2.x and higher
  *
@@ -40,6 +40,7 @@ $get_content = $database->query($query);
 $content = $get_content->fetchRow( MYSQL_ASSOC );
 $whatis = (int)$content['whatis'];
 
+$mode = ($whatis >= 10) ? (int)($whatis / 10) : 0;
 $whatis = $whatis % 10;
 
 $groups = $admin->get_groups_id();
@@ -92,6 +93,16 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
                    $whatisselect .= '<option value="'.$i.'"'.$select.'>'.$whatisarray[$i].'</option>'."\n";
           }
     
+        $modes_names = array('smart', 'full');
+        $modes = array();
+        foreach($modes_names as $item) $modes[] = $MOD_CODE2[strtoupper($item)];
+        $mode_options = "";
+        $counter = 0;
+        foreach($modes as $item) {
+            $mode_options .= "<option value='".$counter."' ".(($counter==$mode)?" selected='selected'":"").">".$item."</option>";
+            $counter++;
+        }
+
         // Insert vars
         $template->set_var(array(
                         'PAGE_ID' => $page_id,
@@ -102,7 +113,10 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
                         'WHATISSELECT' => $whatisselect,
                         'TEXT_SAVE' => $TEXT['SAVE'],
                         'TEXT_CANCEL' => $TEXT['CANCEL'],
+                        'MODE'        => $mode_options,
+                        'MODE_' => $mode,
                         'LANGUAGE' => LANGUAGE,
+                        'MODES'        => $MOD_CODE2['MODE'],
                         'CODE2_HASH' => $hash_id,
                         'FTAN'        => $tan
                 )

@@ -2,10 +2,10 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.1
+ *        @version      2.2.4
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
- *      @license      GNU General Public License
+ *        @license      GNU General Public License
  *        @platform     2.8.x
  *        @requirements PHP 5.2.x and higher
  *
@@ -107,9 +107,12 @@ if( false === $tan_ok) die( header('Location: ../../index.php') );
 if ( isset($_POST['content']) ) {
         $tags                = array('<?php', '?>' , '<?');
         $content        = $admin->add_slashes(str_replace($tags, '', $_POST['content']));
-        $whatis                = $_POST['whatis']; 
+        $whatis                = intval($_POST['whatis']);
         if (($whatis < 0) || ($whatis > 4)) $whatis = 0;
         if (($whatis === 4) && (!in_array(1, $admin->get_groups_id() ))) $whatis=3;
+        $mode                = intval($_POST['mode']);
+        if (($mode < 0) || ($mode > 1)) $mode = 0;
+        $whatis         = $whatis + 10 * $mode;
         $fields = array(
                 'content'        => $content,
                 'whatis'        => $whatis
