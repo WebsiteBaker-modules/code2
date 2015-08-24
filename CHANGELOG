@@ -1,31 +1,37 @@
 
 /* 
+ *        2.2.5        2015-08-24        - added automatic mode (Martin Hecht, mrbaseman)
+ *                                - re-added error handling for inststall procedure
+ *                                - improved wrapping of long lines without spaces
+ *
+ *        2.2.4.1 2015-08-22        - added missing double quotes in modify.htt (nbiz)
+ *
  *        2.2.4        2015-08-22        - re-introduced small and large boxes, 
  *                                - introduced wrapping of long lines, 
  *                                - fixed problems with multiple instances on one page
  *                                - clean up some unused files in codemirror
- *                                - made css height consistent (Martin Hecht)
+ *                                - made css height consistent (Martin Hecht, mrbaseman)
  *
- *        2.2.3        2015-08-20        - another hotfix in install (Martin Hecht)
+ *        2.2.3        2015-08-20        - another hotfix in install (Martin Hecht, mrbaseman)
  *
  *        2.2.2        2015-08-20        - hot fixes: forgot quotes in lang files and
  *                                  fixed a typo in install and corrected case
  *                                  statements in backend.js - I'm sorry, Martin
  *                                  thanks to dbs and jacobi22 for reporting
- *        2.2.1        2015-08-19        - clean up installer and modify and lang-files (Martin Hecht)
+ *        2.2.1        2015-08-19        - clean up installer and modify and lang-files (Martin Hecht, mrbaseman)
  *                              - increased font size
  *                              - sanitize save and view 
  *                                - added French and Italian language support
  *                             thanks to kant for providing feedback and clean installer 
  *
- *        2.2.0        2015-08-16        - add syntax highlighting (Martin Hecht)
+ *        2.2.0        2015-08-16        - add syntax highlighting (Martin Hecht, mrbaseman)
  *
- *      2.1.13  2015-03-07      - print out admin-footer in case of a general protection error (Martin Hecht)
+ *      2.1.13  2015-03-07      - print out admin-footer in case of a general protection error (Martin Hecht, mrbaseman)
  *
- *      2.1.12  2015-01-10      - fix add.php for mysql-strict-mode 
+ *      2.1.12  2015-01-10      - fix add.php for mysql-strict-mode (Martin Hecht, mrbaseman)
  *
  *      2.1.11  2014-05-04      - Add FTAN-Check inside save.php again and correct the header issue to make it run
- *                                                 again under "single-tab-mode" (modification by Martin Hecht), 
+ *                                                 again under "single-tab-mode" (modification by Martin Hecht, mrbaseman), 
  *                                                 thanks to jacobi22 for hints about this issue
  *
  *      2.1.10  2011-08-31      - Remove FTAN-Check inside save.php to get the module run under "single-tab-mode"

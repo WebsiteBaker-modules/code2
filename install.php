@@ -2,7 +2,7 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.4
+ *        @version      2.2.5
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *        @license      GNU General Public License
@@ -20,8 +20,6 @@ if(!defined('WB_PATH')) {
 }
 /* -------------------------------------------------------- */
 
-
-if(!defined('WB_PATH')) die(header('Location: ../../index.php'));
 
 $table = TABLE_PREFIX."mod_code2";
 
@@ -43,3 +41,7 @@ $query .= "`content`        TEXT NOT NULL,";
 $query .= " PRIMARY KEY ( `section_id` ) )";
 
 $database->query($query);
+
+$error=$database->get_error();
+
+if($error) $admin->print_error($error, $js_back);

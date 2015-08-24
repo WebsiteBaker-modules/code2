@@ -2,7 +2,7 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.4
+ *        @version      2.2.5
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *        @license      GNU General Public License
@@ -93,7 +93,7 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
                    $whatisselect .= '<option value="'.$i.'"'.$select.'>'.$whatisarray[$i].'</option>'."\n";
           }
     
-        $modes_names = array('smart', 'full');
+        $modes_names = array('smart', 'full', 'auto');
         $modes = array();
         foreach($modes_names as $item) $modes[] = $MOD_CODE2[strtoupper($item)];
         $mode_options = "";
@@ -114,7 +114,6 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
                         'TEXT_SAVE' => $TEXT['SAVE'],
                         'TEXT_CANCEL' => $TEXT['CANCEL'],
                         'MODE'        => $mode_options,
-                        'MODE_' => $mode,
                         'LANGUAGE' => LANGUAGE,
                         'MODES'        => $MOD_CODE2['MODE'],
                         'CODE2_HASH' => $hash_id,

@@ -16,7 +16,7 @@
 <script src="{WB_URL}/modules/code2/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 <script src="{WB_URL}/modules/code2/codemirror/addon/edit/matchbrackets.js"></script>
 
-<form name="codeform{SECTION_ID}" class="whatis_{WHATIS}_{SECTION_ID}" action="{WB_URL}/modules/code2/save.php" method="post">
+<form name="codeform{SECTION_ID}" class="whatis_{WHATIS}_{SECTION_ID}" width="100%" action="{WB_URL}/modules/code2/save.php" method="post">
 
 <input type="hidden" name="page_id" value="{PAGE_ID}" />
 <input type="hidden" name="section_id" value="{SECTION_ID}" />
@@ -25,7 +25,7 @@
 <select name="whatis" onchange="javascript:changecode{SECTION_ID}()">{WHATISSELECT}</select>
 <span style="margin-left:20px">{MODES}: <select name='mode' style="margin-left:5px;width:100px;" onchange="javascript:change_mode{SECTION_ID}();">{MODE}</select></span>
 <span id="infotext_output{SECTION_ID}" style="margin-left:20px;"></span>
-<textarea id="content{SECTION_ID}" name="content" class="content_{WHATIS}" style="margin-top:5px;width:100%;" rows="0" cols="0">{CONTENT}</textarea>
+<textarea id="content{SECTION_ID}" name="content" class="content_{WHATIS}" style="margin-top:5px;" rows="0" cols="0">{CONTENT}</textarea>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
         <td align="left">
@@ -66,6 +66,8 @@ function getModeString(whatis) {
         return t;
 }
 
+var width{SECTION_ID}=document.codeform{SECTION_ID}.offsetWidth;
+
 var  editor{SECTION_ID} = CodeMirror.fromTextArea(document.getElementById("content{SECTION_ID}"), {
     lineNumbers: true,
     mode: "text/html",
@@ -88,11 +90,13 @@ changecode{SECTION_ID}();
 
 
 function change_mode{SECTION_ID} () {
-        var ref = document.getElementById("content{SECTION_ID}");
         var mode = document.codeform{SECTION_ID}.mode.options[document.codeform{SECTION_ID}.mode.selectedIndex].value;
-        var new_height = (mode == 1) ? 400 : 50;
-        ref.style.height=new_height+"px";
-        editor{SECTION_ID}.setSize("100%", new_height);
+        var new_height = (mode == 0) ? 50 : 400;
+        document.getElementById("content{SECTION_ID}").style.height=new_height+"px";
+        if (mode == 2) new_height= "auto";
+        var new_width=width{SECTION_ID};
+        if(!(new_width>0))new_width="100%";
+        editor{SECTION_ID}.setSize(new_width, new_height);
         editor{SECTION_ID}.refresh();
 }
 
