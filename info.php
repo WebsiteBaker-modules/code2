@@ -2,7 +2,7 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.5
+ *        @version      2.2.6
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *        @license      GNU General Public License
@@ -15,8 +15,8 @@
 /* -------------------------------------------------------- */
 // Must include code to stop this file being accessed directly
 if(!defined('WB_PATH')) {
-        require_once(dirname(dirname(__FILE__)).'/framework/globalExceptionHandler.php');
-        throw new IllegalFileException();
+        // Stop this file being access directly
+        die('<head><title>Access denied</title></head><body><h2 style="color:red;margin:3em auto;text-align:center;">Cannot access this file directly</h2></body></html>');
 }
 /* -------------------------------------------------------- */
 
@@ -26,7 +26,7 @@ if(!defined('WB_PATH')) {
 $module_directory        = 'code2';
 $module_name            = 'Code2';
 $module_function        = 'page';
-$module_version                = '2.2.5';
+$module_version                = '2.2.6';
 $module_platform        = '2.8.x';
 $module_author                = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)';
 $module_license                = 'GNU General Public License';

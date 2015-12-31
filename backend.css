@@ -1,7 +1,7 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.5
+ *        @version      2.2.6
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
  *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
  *        @license      GNU General Public License
@@ -9,6 +9,13 @@
  *        @requirements PHP 5.2.x and higher
  *
  **/
+
+@import url("codemirror/lib/codemirror.css");
+@import url("codemirror/theme/default_0.css");
+@import url("codemirror/theme/default_1.css");
+@import url("codemirror/theme/default_2.css");
+@import url("codemirror/theme/default_3.css");
+@import url("codemirror/theme/default_4.css");
 
 #infotext_output {}
 
