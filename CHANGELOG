@@ -1,5 +1,7 @@
 
 /* 
+ *        2.2.7        2016-01-27        - fix French language file
+ *
  *        2.2.6        2015-12-30        - move css includes for codemirror from modify.htt
  *                                  to backend.css (mrbaseman), thanks to jacobi22
  *        2.2.5        2015-08-24        - added automatic mode (Martin Hecht, mrbaseman)
