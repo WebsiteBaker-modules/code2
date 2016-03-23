@@ -2,9 +2,9 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.7
+ *        @version      2.2.9
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
+ *        @copyright    (c) 2009 - 2016, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *        @license      GNU General Public License
  *        @platform     2.8.x
@@ -24,15 +24,13 @@ if(!defined('WB_PATH')) {
 
 // for changelog see file CHANGELOG
 
-$module_directory        = 'code2';
-$module_name            = 'Code2';
-$module_function        = 'page';
-$module_version                = '2.2.7';
-$module_platform        = '2.8.x';
-$module_author                = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)';
-$module_license                = 'GNU General Public License';
-$module_description     = 'This module allows you to execute PHP, HTML, Javascript commands and internal comments (<span style="color:#FF0000;">limit access to users you trust!</span>)';
-$module_home                = 'http://forum.websitebaker.org/index.php/topic,28581.0.html';
-$module_guid                = '968243F3-EC4A-439D-8936-7D727D9EF8C2';
-
-?>
+$module_directory   = 'code2';
+$module_name        = 'Code2';
+$module_function    = 'page';
+$module_version     = '2.2.9';
+$module_platform    = '2.8.x';
+$module_author      = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)';
+$module_license     = 'GNU General Public License';
+$module_description = 'This module allows you to execute PHP, HTML, Javascript commands and internal comments (<span style="color:#FF0000;">limit access to users you trust!</span>)';
+$module_home        = 'http://forum.websitebaker.org/index.php/topic,28581.0.html';
+$module_guid        = '968243F3-EC4A-439D-8936-7D727D9EF8C2';

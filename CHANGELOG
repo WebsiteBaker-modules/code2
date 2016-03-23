@@ -1,5 +1,9 @@
 
 /* 
+ *        2.2.9        2016-03-23        - fix html special char notation for acute accents
+ *
+ *        2.2.8        2016-03-22        - realign code: wrap long lines and set tab width=4
+ *
  *        2.2.7        2016-01-27        - fix French language file
  *
  *        2.2.6        2015-12-30        - move css includes for codemirror from modify.htt
@@ -26,7 +30,7 @@
  *                              - increased font size
  *                              - sanitize save and view 
  *                                - added French and Italian language support
- *                             thanks to kant for providing feedback and clean installer 
+ *                                thanks to kant for providing feedback and clean installer 
  *
  *        2.2.0        2015-08-16        - add syntax highlighting (Martin Hecht, mrbaseman)
  *

@@ -22,13 +22,13 @@
 <textarea id="content{SECTION_ID}" name="content" class="content_{WHATIS}" style="margin-top:5px;" rows="0" cols="0">{CONTENT}</textarea>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-        <td align="left">
-                <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
-        </td>
-        <td align="right">
-                
-                <input type="button" value="{TEXT_CANCEL}" onclick="javascript: window.location = 'index.php';" style="width: 150px; margin-top: 5px;" />
-        </td>
+    <td align="left">
+        <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
+    </td>
+    <td align="right">
+        
+        <input type="button" value="{TEXT_CANCEL}" onclick="javascript: window.location = 'index.php';" style="width: 150px; margin-top: 5px;" />
+    </td>
 </tr>
 </table>
 </form>
@@ -42,22 +42,22 @@
 <!--
 
 function getModeString(whatis) {
-        var t = "";
-        switch(whatis) {
-                case '1':
-                        t = "text/html";
-                        break;
-                case '2': t = "text/javascript";
-                        break;
-                case '3': t = "text";
-                        break;
-                case '4': t = "text";
-                        break;
-                default:
-                        t = "application/x-httpd-php-open";
-        }
-        
-        return t;
+    var t = "";
+    switch(whatis) {
+        case '1':
+            t = "text/html";
+            break;
+        case '2': t = "text/javascript";
+            break;
+        case '3': t = "text";
+            break;
+        case '4': t = "text";
+            break;
+        default:
+            t = "application/x-httpd-php-open";
+    }
+    
+    return t;
 }
 
 var width{SECTION_ID}=document.codeform{SECTION_ID}.offsetWidth;
@@ -70,28 +70,28 @@ var  editor{SECTION_ID} = CodeMirror.fromTextArea(document.getElementById("conte
   });
 
 function changecode{SECTION_ID}() {
-                
-        var whatis = document.codeform{SECTION_ID}.whatis.options[document.codeform{SECTION_ID}.whatis.selectedIndex].value;
-        var t = gethinttext(whatis, '{LANGUAGE}');        
-        document.getElementById("infotext_output{SECTION_ID}").innerHTML  = t;
-        document.getElementById("content{SECTION_ID}").className = "content_"+whatis;
-        editor{SECTION_ID}.setOption("mode", getModeString(whatis));
-        editor{SECTION_ID}.setOption("theme", "default_"+whatis);
-        editor{SECTION_ID}.refresh();
+        
+    var whatis = document.codeform{SECTION_ID}.whatis.options[document.codeform{SECTION_ID}.whatis.selectedIndex].value;
+    var t = gethinttext(whatis, '{LANGUAGE}');    
+    document.getElementById("infotext_output{SECTION_ID}").innerHTML  = t;
+    document.getElementById("content{SECTION_ID}").className = "content_"+whatis;
+    editor{SECTION_ID}.setOption("mode", getModeString(whatis));
+    editor{SECTION_ID}.setOption("theme", "default_"+whatis);
+    editor{SECTION_ID}.refresh();
 } 
 
 changecode{SECTION_ID}();
 
 
 function change_mode{SECTION_ID} () {
-        var mode = document.codeform{SECTION_ID}.mode.options[document.codeform{SECTION_ID}.mode.selectedIndex].value;
-        var new_height = (mode == 0) ? 50 : 400;
-        document.getElementById("content{SECTION_ID}").style.height=new_height+"px";
-        if (mode == 2) new_height= "auto";
-        var new_width=width{SECTION_ID};
-        if(!(new_width>0))new_width="100%";
-        editor{SECTION_ID}.setSize(new_width, new_height);
-        editor{SECTION_ID}.refresh();
+    var mode = document.codeform{SECTION_ID}.mode.options[document.codeform{SECTION_ID}.mode.selectedIndex].value;
+    var new_height = (mode == 0) ? 50 : 400;
+    document.getElementById("content{SECTION_ID}").style.height=new_height+"px";
+    if (mode == 2) new_height= "auto";
+    var new_width=width{SECTION_ID};
+    if(!(new_width>0))new_width="100%";
+    editor{SECTION_ID}.setSize(new_width, new_height);
+    editor{SECTION_ID}.refresh();
 }
 
 change_mode{SECTION_ID}();

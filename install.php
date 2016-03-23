@@ -2,9 +2,9 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.7
+ *        @version      2.2.9
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
+ *        @copyright    (c) 2009 - 2016, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *        @license      GNU General Public License
  *        @platform     2.8.x
@@ -35,10 +35,10 @@ $database->query($query);
  *        Creating the table new
  */
 $query  = "CREATE TABLE `".$table."` (";
-$query .= "`section_id`        INT NOT NULL DEFAULT '0',";
-$query .= "`page_id`        INT NOT NULL DEFAULT '0',";
-$query .= "`whatis`        INT NOT NULL DEFAULT '0',";
-$query .= "`content`        TEXT NOT NULL,";
+$query .= "`section_id` INT NOT NULL DEFAULT '0',";
+$query .= "`page_id`    INT NOT NULL DEFAULT '0',";
+$query .= "`whatis`     INT NOT NULL DEFAULT '0',";
+$query .= "`content`    TEXT NOT NULL,";
 $query .= " PRIMARY KEY ( `section_id` ) )";
 
 $database->query($query);

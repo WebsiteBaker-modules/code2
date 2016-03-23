@@ -2,9 +2,9 @@
 /**
  *
  *        @module       Code2
- *        @version      2.2.7
+ *        @version      2.2.9
  *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2015, Website Baker Org. e.V.
+ *        @copyright    (c) 2009 - 2016, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *        @license      GNU General Public License
  *        @platform     2.8.x
@@ -27,7 +27,7 @@ if(!defined('WB_PATH')) {
  *        Delete record from the database
  *
  */
-$database->query("DELETE FROM `".TABLE_PREFIX."mod_code2`"
-                . " WHERE `section_id`= '".$section_id."'");
+$database->query(
+    "DELETE FROM `".TABLE_PREFIX."mod_code2`"
+       . " WHERE `section_id`= '".$section_id."'");
 
-?>
