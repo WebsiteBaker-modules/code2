@@ -1,14 +1,14 @@
 <?php
 /**
  *
- *        @module       Code2
- *        @version      2.2.10
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @module       Code2
+ *      @version      2.2.11
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
- *        @license      GNU General Public License
- *        @platform     2.8.x
- *        @requirements PHP 5.2.x and higher
+ *      @license      GNU General Public License
+ *      @platform     2.8.x
+ *      @requirements PHP 5.2.x and higher
  *
  **/
 
@@ -71,15 +71,15 @@ if (true === method_exists($admin, 'checkFTAN')) {
     if (!isset($_SESSION['old_tan'][ $section_id ])) {
         // faild
     } else {
-        
+
         $hash = $_SESSION['old_tan'][ $section_id ];
-        
+
         unset( $_SESSION['old_tan']);
-        
+
         $offset = hexdec($hash[0]);
         $str = substr($hash, $offset, 16);
         $name = substr($hash, 0, ( $offset * -1));
-        
+
         if (!isset($_POST[ $name ])) {
             // faild
         } else {
@@ -90,7 +90,7 @@ if (true === method_exists($admin, 'checkFTAN')) {
                 $tan_ok = true;
             }
         }
-        
+
         unset($offset);
         unset($str);
         unset($name);
@@ -119,21 +119,21 @@ if ( isset($_POST['content']) ) {
         'content'    => $content,
         'whatis'    => $whatis
     );
-    
+
     $query = "UPDATE `".TABLE_PREFIX."mod_code2` SET ";
-    foreach($fields as $key=>$value) $query .= "`".$key."`=  '".addslashes($value)."', ";
+    foreach($fields as $key=>$value) $query .= "`".$key."`=  '".$value."', ";
     $query = substr($query, 0, -2)." where `section_id`='".$section_id."'";
 
     $database->query($query);
-    
-    /** 
+
+    /**
      *    Check if there is a database error, otherwise say successful
      *
      */
     if ( true === $database->is_error() ) {
         $admin->print_error($database->get_error(), $js_back, true );
     } else {
-        $admin->print_success($MESSAGE['PAGES']['SAVED'], 
+        $admin->print_success($MESSAGE['PAGES']['SAVED'],
             ADMIN_URL.'/pages/modify.php?page_id='.$page_id);
     }
 }

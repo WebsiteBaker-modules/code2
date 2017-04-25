@@ -1,9 +1,9 @@
 
 todo list:
 
-- possible conflict with other modules loading codemirror, 
+- possible conflict with other modules loading codemirror,
   see  http://forum.wbce.org/viewtopic.php?pid=1169#p1169
-  solution: implement some kind of namespace concept (see link in the 
+  solution: implement some kind of namespace concept (see link in the
   thread) and a loader mechanism like in ckeditor and combine both
   to a framework which loads codemirror in a closed environment
 

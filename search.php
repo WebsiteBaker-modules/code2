@@ -1,14 +1,14 @@
 <?php
 /**
  *
- *        @module       Code2
- *        @version      2.2.10
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @module       Code2
+ *      @version      2.2.11
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
- *        @license      GNU General Public License
- *        @platform     2.8.x
- *        @requirements PHP 5.2.x and higher
+ *      @license      GNU General Public License
+ *      @platform     2.8.x
+ *      @requirements PHP 5.2.x and higher
  *
  **/
 
@@ -26,14 +26,14 @@ if(!defined('WB_PATH')) {
 
 function code2_search($func_vars) {
     extract($func_vars, EXTR_PREFIX_ALL, 'func');
-    
+
     // how many lines of excerpt we want to have at most
     $max_excerpt_num = $func_default_max_excerpt;
     $divider = ".";
     $result = false;
-    
+
     $table = TABLE_PREFIX."mod_code2";
-    $query 
+    $query
        = $func_database->query(
            "SELECT `content`"
                . " FROM `$table`"

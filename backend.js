@@ -1,13 +1,13 @@
 /**
  *
- *        @module       Code2
- *        @version      2.2.10
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @module       Code2
+ *      @version      2.2.11
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
- *        @license      GNU General Public License
- *        @platform     2.8.x
- *        @requirements PHP 5.2.x and higher
+ *      @license      GNU General Public License
+ *      @platform     2.8.x
+ *      @requirements PHP 5.2.x and higher
  *
  **/
 
@@ -37,7 +37,7 @@ function gethinttext(whatis, lang) {
                       + "<span class='info_not'> ?&gt;</span>";
             }
             break;
-    
+
         case 'FR':
             switch(whatis) {
                 case '1':    t = "HTML: <b> votre entr&eacute;e </b>";
@@ -61,7 +61,7 @@ function gethinttext(whatis, lang) {
                       + "<span class='info_not'> ?&gt;</span>";
             }
             break;
-                        
+
         case 'IT':
             switch(whatis) {
                 case '1':    t = "HTML: <b> il Suo contributo </b>";

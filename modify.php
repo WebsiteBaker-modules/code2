@@ -1,14 +1,14 @@
 <?php
 /**
  *
- *        @module       Code2
- *        @version      2.2.10
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @module       Code2
+ *      @version      2.2.11
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
- *        @license      GNU General Public License
- *        @platform     2.8.x
- *        @requirements PHP 5.2.x and higher
+ *      @license      GNU General Public License
+ *      @platform     2.8.x
+ *      @requirements PHP 5.2.x and higher
  *
  **/
 
@@ -56,9 +56,9 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
      *    Building the hash-id and store it inside the $_SESSION array.
      */
     $hash_id = md5( microtime()."just another day of hell" );
-    
+
     $_SESSION['code2_hash'][$section_id] = $hash_id;
-    
+
     /**
      *    FTAN Addition ...
      *
@@ -73,29 +73,29 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
         $str = substr($hash, $offset, 16);
         $name = substr($hash, 0, ( $offset * -1) );
         $tan = "<input type='hidden' name='".$name."' value='".$str."' />";
-    
+
         if (!isset($_SESSION['old_tan'])) $_SESSION['old_tan'] = array();
         $_SESSION['old_tan'][$section_id] = $hash;
-        
+
         unset($hash);
         unset($offset);
         unset($str);
         unset($name);
     }
-    
+
     $content = htmlspecialchars($content['content']);
     $whatis_types = array('PHP', 'HTML', 'Javascript', 'Internal');
     if (in_array(1, $groups)) $whatis_types[]="Admin";
     $whatisarray = array();
     foreach($whatis_types as $item) $whatisarray[] = $MOD_CODE2[strtoupper($item)];
-    
+
     $whatisselect = '';
     for($i=0; $i < count($whatisarray); $i++) {
            $select = ($whatis == $i) ? " selected='selected'" : "";
            $whatisselect .= '<option value="'.$i.'"'.$select.'>'
               .$whatisarray[$i].'</option>'."\n";
       }
-    
+
     $modes_names = array('smart', 'full', 'auto');
     $modes = array();
     foreach($modes_names as $item) $modes[] = $MOD_CODE2[strtoupper($item)];
@@ -128,6 +128,6 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
     // Parse template object
     $template->parse('main', 'main_block', false);
     $template->pparse('output', 'page', false, false);
-    
+
     unset($tan);
 }

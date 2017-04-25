@@ -1,14 +1,14 @@
 <?php
 /**
  *
- *        @module       Code2
- *        @version      2.2.10
- *        @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman) 
- *        @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @module       Code2
+ *      @version      2.2.11
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
- *        @license      GNU General Public License
- *        @platform     2.8.x
- *        @requirements PHP 5.2.x and higher
+ *      @license      GNU General Public License
+ *      @platform     2.8.x
+ *      @requirements PHP 5.2.x and higher
  *
  **/
 
@@ -28,7 +28,7 @@ if(!defined('WB_PATH')) {
 $module_directory   = 'code2';
 $module_name        = 'Code2';
 $module_function    = 'page';
-$module_version     = '2.2.10';
+$module_version     = '2.2.11';
 $module_platform    = '2.8.x';
 $module_author      = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)';
 $module_license     = 'GNU General Public License';

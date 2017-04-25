@@ -26,7 +26,7 @@
         <input type="submit" value="{TEXT_SAVE}" style="width: 150px; margin-top: 5px;" />
     </td>
     <td align="right">
-        
+
         <input type="button" value="{TEXT_CANCEL}" onclick="javascript: window.location = 'index.php';" style="width: 150px; margin-top: 5px;" />
     </td>
 </tr>
@@ -56,7 +56,7 @@ function getModeString(whatis) {
         default:
             t = "application/x-httpd-php-open";
     }
-    
+
     return t;
 }
 
@@ -70,15 +70,15 @@ var  editor{SECTION_ID} = CodeMirror.fromTextArea(document.getElementById("conte
   });
 
 function changecode{SECTION_ID}() {
-        
+
     var whatis = document.codeform{SECTION_ID}.whatis.options[document.codeform{SECTION_ID}.whatis.selectedIndex].value;
-    var t = gethinttext(whatis, '{LANGUAGE}');    
+    var t = gethinttext(whatis, '{LANGUAGE}');
     document.getElementById("infotext_output{SECTION_ID}").innerHTML  = t;
     document.getElementById("content{SECTION_ID}").className = "content_"+whatis;
     editor{SECTION_ID}.setOption("mode", getModeString(whatis));
     editor{SECTION_ID}.setOption("theme", "default_"+whatis);
     editor{SECTION_ID}.refresh();
-} 
+}
 
 changecode{SECTION_ID}();
 
