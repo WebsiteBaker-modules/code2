@@ -2,9 +2,9 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.11
+ *      @version      2.2.12
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
- *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *      @license      GNU General Public License
  *      @platform     2.8.x
@@ -15,14 +15,12 @@
 
 /* -------------------------------------------------------- */
 // Must include code to stop this file being accessed directly
-if(!defined('WB_PATH')) {
-        // Stop this file being access directly
-        if(!headers_sent()) header("Location: ../index.php",TRUE,301);
-        die('<head><title>Access denied</title></head><body><h2 style="color:red;margin:3em auto;text-align:center;">Cannot access this file directly</h2></body></html>');
-}
+if(defined('WB_PATH') == false) { die('Illegale file access /'.basename(__DIR__).'/'.basename(__FILE__).''); }
 /* -------------------------------------------------------- */
 
 
+include_once(WB_PATH.'/framework/functions.php');
+include(WB_PATH.'/modules/code2/dirmaker.php');
 
 /**
  *        Get content
@@ -43,7 +41,26 @@ if (($get_content) && ($get_content->numRows() > 0)) {
     switch ($whatis) {
 
         case 0:        // PHP
-                eval($content);
+                $codelocation= WB_PATH."/temp/modules/code2/section_".$section_id.".php.inc";
+
+                if (file_exists($codelocation) AND is_readable($codelocation)) {
+                        // Include content
+                        include ($codelocation);
+                }
+                else {
+                        $wrapped_content = "<?php \nif (!defined('WB_PATH')) die(header('HTTP/1.0 404 Not Found').'404 Not Found');\n\n"
+                                . $content."";
+
+                        if( (false !== @file_put_contents($codelocation,$wrapped_content))) {
+                                // Chmod the file
+                                change_mode($codelocation);
+                                include ($codelocation);
+                        }
+                        else {
+                                echo "Cannot access datafile: $codelocation <br />";
+                        }
+
+                }
                 break;
 
         case 1:        // HTML

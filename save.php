@@ -2,9 +2,9 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.11
+ *      @version      2.2.12
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
- *      @copyright    (c) 2009 - 2017, Website Baker Org. e.V.
+ *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *      @license      GNU General Public License
  *      @platform     2.8.x
@@ -18,11 +18,7 @@ require('../../config.php');
 
 /* -------------------------------------------------------- */
 // Must include code to stop this file being accessed directly
-if(!defined('WB_PATH')) {
-        // Stop this file being access directly
-        if(!headers_sent()) header("Location: ../index.php",TRUE,301);
-        die('<head><title>Access denied</title></head><body><h2 style="color:red;margin:3em auto;text-align:center;">Cannot access this file directly</h2></body></html>');
-}
+if(defined('WB_PATH') == false) { die('Illegale file access /'.basename(__DIR__).'/'.basename(__FILE__).''); }
 /* -------------------------------------------------------- */
 
 
@@ -124,6 +120,14 @@ if ( isset($_POST['content']) ) {
     foreach($fields as $key=>$value) $query .= "`".$key."`=  '".$value."', ";
     $query = substr($query, 0, -2)." where `section_id`='".$section_id."'";
 
+    $code2location= WB_PATH."/temp/modules/code2/section_".$section_id.".php.inc";
+
+    if (file_exists($code2location)){
+            if (!unlink ($code2location)) {
+                    $admin->print_error("Cannot delete accesfile: $code2location", $js_back);
+            }
+    }
+
     $database->query($query);
 
     /**
@@ -133,7 +137,7 @@ if ( isset($_POST['content']) ) {
     if ( true === $database->is_error() ) {
         $admin->print_error($database->get_error(), $js_back, true );
     } else {
-        $admin->print_success($MESSAGE['PAGES']['SAVED'],
+        $admin->print_success($MESSAGE['PAGES_SAVED'],
             ADMIN_URL.'/pages/modify.php?page_id='.$page_id);
     }
 }

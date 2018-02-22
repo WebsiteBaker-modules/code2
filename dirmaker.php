@@ -19,12 +19,19 @@ if(defined('WB_PATH') == false) { die('Illegale file access /'.basename(__DIR__)
 /* -------------------------------------------------------- */
 
 
+// Define target path.
+$sModCode2Dir=WB_PATH."/temp/modules/code2";
+$sModModulesDir=WB_PATH."/temp/modules";
 
-/**
- *        Delete record from the database
- *
- */
-$database->query(
-    "DELETE FROM `".TABLE_PREFIX."mod_code2`"
-       . " WHERE `section_id`= '".$section_id."'");
-
+//check if directory exits
+if (is_dir($sModCode2Dir) != true) {
+        //if not create it and give an error message if impossible to create
+        if (mkdir($sModCode2Dir, 0777, true)){
+                change_mode($sModModulesDir);
+                change_mode($sModCode2Dir);
+        }
+        else {
+                echo("Modul Code2: Cannot access/create directory /temp/modules/code2<br />");
+        }
+}
+?>

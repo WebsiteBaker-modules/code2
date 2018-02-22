@@ -60,8 +60,6 @@ function getModeString(whatis) {
     return t;
 }
 
-var width{SECTION_ID}=document.codeform{SECTION_ID}.offsetWidth;
-
 var  editor{SECTION_ID} = CodeMirror.fromTextArea(document.getElementById("content{SECTION_ID}"), {
     lineNumbers: true,
     mode: "text/html",
@@ -88,8 +86,7 @@ function change_mode{SECTION_ID} () {
     var new_height = (mode == 0) ? 50 : 400;
     document.getElementById("content{SECTION_ID}").style.height=new_height+"px";
     if (mode == 2) new_height= "auto";
-    var new_width=width{SECTION_ID};
-    if(!(new_width>0))new_width="100%";
+    var new_width="100%";
     editor{SECTION_ID}.setSize(new_width, new_height);
     editor{SECTION_ID}.refresh();
 }
