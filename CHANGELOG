@@ -1,9 +1,11 @@
 
 /*
+ *      2.2.13  2018-04-12      - call preprocess only if the method exists, thanks to dbs
+ *
  *      2.2.12  2018-02-22      - fix layout issue in modify.htt (thanks to florian)
  *                              - change redirects upon illegal access to standard wb behavior
  *                              - avoid eval() like code_without_evil does
- *                              _ replace double index language file usage (thanks to Uwe)
+ *                              - replace double index language file usage (thanks to Uwe)
  *
  *      2.2.11  2017-04-25      - revert the previous change (it simply was wrong)
  *

@@ -1,7 +1,7 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.12
+ *      @version      2.2.13
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html

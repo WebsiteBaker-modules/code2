@@ -2,7 +2,7 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.12
+ *      @version      2.2.13
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
@@ -64,7 +64,10 @@ if (($get_content) && ($get_content->numRows() > 0)) {
                 break;
 
         case 1:        // HTML
-                $wb->preprocess($content);
+               if( version_compare( WB_VERSION, '2.10.0', '<' ))
+                        && (method_exists($wb,'preprocess')){
+                        $wb->preprocess($content);
+                }
                 echo $content;
                 break;
 

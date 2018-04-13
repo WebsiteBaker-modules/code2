@@ -2,7 +2,7 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.12
+ *      @version      2.2.13
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
@@ -24,7 +24,7 @@ if(defined('WB_PATH') == false) { die('Illegale file access /'.basename(__DIR__)
 $module_directory   = 'code2';
 $module_name        = 'Code2';
 $module_function    = 'page';
-$module_version     = '2.2.12';
+$module_version     = '2.2.13';
 $module_platform    = '2.8.x';
 $module_author      = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)';
 $module_license     = 'GNU General Public License';
