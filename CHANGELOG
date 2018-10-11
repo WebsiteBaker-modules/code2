@@ -1,5 +1,7 @@
 
 /*
+ *      2.2.15  2018-10-10      - include template.inc if class Template is not available
+ *
  *      2.2.14  2018-04-13      - fix brackets in the previous commit
  *
  *      2.2.13  2018-04-12      - call preprocess only if the method exists, thanks to dbs
