@@ -2,8 +2,8 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.15
- *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @version      2.2.16
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *      @license      GNU General Public License
@@ -110,11 +110,14 @@ if ( isset($_POST['content']) ) {
     $tags       = array('<?php', '?>' , '<?');
     $content    = $admin->add_slashes(str_replace($tags, '', $_POST['content']));
     $whatis     = intval($_POST['whatis']);
-    if (($whatis < 0) || ($whatis > 4)) $whatis = 0;
+    $highlight  = isset($_POST['highlighting']) ? 1 : 0;
+    if (($whatis < 0) || ($whatis > 7)) $whatis = 0;
     if (($whatis === 4) && (!in_array(1, $admin->get_groups_id() ))) $whatis=3;
     $mode       = intval($_POST['mode']);
     if (($mode < 0) || ($mode > 2)) $mode = 0;
     $whatis     = $whatis + 10 * $mode;
+    if(!$highlight) $whatis += 5;
+
     $fields = array(
         'content'    => $content,
         'whatis'    => $whatis

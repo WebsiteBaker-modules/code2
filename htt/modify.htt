@@ -1,5 +1,6 @@
 <!-- BEGIN main_block -->
 
+<!-- BEGIN script_block -->
 <script src="{WB_URL}/modules/code2/codemirror/lib/codemirror.js"></script>
 <script src="{WB_URL}/modules/code2/codemirror/mode/xml/xml.js"></script>
 <script src="{WB_URL}/modules/code2/codemirror/mode/javascript/javascript.js"></script>
@@ -9,6 +10,7 @@
 <script src="{WB_URL}/modules/code2/codemirror/mode/sql/sql.js"></script>
 <script src="{WB_URL}/modules/code2/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 <script src="{WB_URL}/modules/code2/codemirror/addon/edit/matchbrackets.js"></script>
+<!-- END script_block -->
 
 <form name="codeform{SECTION_ID}" class="whatis_{WHATIS}_{SECTION_ID}" width="100%" action="{WB_URL}/modules/code2/save.php" method="post">
 
@@ -18,7 +20,11 @@
 {FTAN}
 <select name="whatis" onchange="javascript:changecode{SECTION_ID}()">{WHATISSELECT}</select>
 <span style="margin-left:20px">{MODES}: <select name='mode' style="margin-left:5px;width:100px;" onchange="javascript:change_mode{SECTION_ID}();">{MODE}</select></span>
+
+<span style="margin-left:20px">Syntax highlighting  <input type="checkbox" name="highlighting" value="highlighting" {HIGHLIGHTING} onchange="javascript:changecode{SECTION_ID}()"/></span>
+
 <span id="infotext_output{SECTION_ID}" style="margin-left:20px;"></span>
+
 <textarea id="content{SECTION_ID}" name="content" class="content_{WHATIS}" style="margin-top:5px;" rows="0" cols="0">{CONTENT}</textarea>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
@@ -45,13 +51,20 @@ function getModeString(whatis) {
     var t = "";
     switch(whatis) {
         case '1':
+        case '6':
             t = "text/html";
             break;
-        case '2': t = "text/javascript";
+        case '2':
+        case '7':
+            t = "text/javascript";
             break;
-        case '3': t = "text";
+        case '3':
+        case '8':
+            t = "text";
             break;
-        case '4': t = "text";
+        case '4':
+        case '9':
+            t = "text";
             break;
         default:
             t = "application/x-httpd-php-open";
@@ -60,12 +73,14 @@ function getModeString(whatis) {
     return t;
 }
 
+<!-- BEGIN editor_block -->
 var  editor{SECTION_ID} = CodeMirror.fromTextArea(document.getElementById("content{SECTION_ID}"), {
     lineNumbers: true,
     mode: "text/html",
     matchBrackets: true,
     lineWrapping: true
   });
+<!-- END editor_block -->
 
 function changecode{SECTION_ID}() {
 
@@ -73,9 +88,11 @@ function changecode{SECTION_ID}() {
     var t = gethinttext(whatis, '{LANGUAGE}');
     document.getElementById("infotext_output{SECTION_ID}").innerHTML  = t;
     document.getElementById("content{SECTION_ID}").className = "content_"+whatis;
-    editor{SECTION_ID}.setOption("mode", getModeString(whatis));
-    editor{SECTION_ID}.setOption("theme", "default_"+whatis);
-    editor{SECTION_ID}.refresh();
+    if(typeof(editor{SECTION_ID}) !== 'undefined'){
+        editor{SECTION_ID}.setOption("mode", getModeString(whatis));
+        editor{SECTION_ID}.setOption("theme", "default_"+whatis);
+        editor{SECTION_ID}.refresh();
+    }
 }
 
 changecode{SECTION_ID}();
@@ -87,8 +104,10 @@ function change_mode{SECTION_ID} () {
     document.getElementById("content{SECTION_ID}").style.height=new_height+"px";
     if (mode == 2) new_height= "auto";
     var new_width="100%";
-    editor{SECTION_ID}.setSize(new_width, new_height);
-    editor{SECTION_ID}.refresh();
+    if(typeof(editor{SECTION_ID}) !== 'undefined'){
+        editor{SECTION_ID}.setSize(new_width, new_height);
+        editor{SECTION_ID}.refresh();
+    }
 }
 
 change_mode{SECTION_ID}();

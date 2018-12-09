@@ -2,8 +2,8 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.15
- *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support and syntax highlighting by Martin Hecht (mrbaseman)
+ *      @version      2.2.16
+ *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
  *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
  *      @license      GNU General Public License
@@ -33,7 +33,6 @@ require_once ( !file_exists($lang) ? (dirname(__FILE__))."/languages/EN.php" : $
 if(!class_exists('Template')){ require(WB_PATH.'/include/phplib/template.inc');}
 $template = new Template(WB_PATH.'/modules/code2');
 $template->set_file('page', 'htt/modify.htt');
-$template->set_block('page', 'main_block', 'main');
 
 // Get page content
 $query = "SELECT `content`, `whatis`"
@@ -45,6 +44,22 @@ $whatis = (int)$content['whatis'];
 
 $mode = ($whatis >= 10) ? (int)($whatis / 10) : 0;
 $whatis = $whatis % 10;
+$highlight = ($whatis < 5);
+$whatis = $whatis % 5;
+
+if(!$highlight){
+   $template->set_block('page', 'script_block', 'script');
+   $template->parse('script', 'dummy', false);
+   $template->set_block('page', 'editor_block', 'editor');
+   $template->parse('editor', 'dummy', false);
+} else {
+   $template->set_block('page', 'script_block', 'script');
+   $template->parse('script', 'script_block', false);
+   $template->set_block('page', 'editor_block', 'editor');
+   $template->parse('editor', 'editor_block', false);
+}
+
+$template->set_block('page', 'main_block', 'main');
 
 $groups = $admin->get_groups_id();
 
@@ -87,17 +102,23 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
     $content = htmlspecialchars($content['content']);
     $whatis_types = array('PHP', 'HTML', 'Javascript', 'Internal');
     if (in_array(1, $groups)) $whatis_types[]="Admin";
+
     $whatisarray = array();
     foreach($whatis_types as $item) $whatisarray[] = $MOD_CODE2[strtoupper($item)];
 
     $whatisselect = '';
     for($i=0; $i < count($whatisarray); $i++) {
            $select = ($whatis == $i) ? " selected='selected'" : "";
-           $whatisselect .= '<option value="'.$i.'"'.$select.'>'
-              .$whatisarray[$i].'</option>'."\n";
+           $entry = $whatisarray[$i];
+           if($entry != ""){
+               $whatisselect .= '<option value="'.$i.'"'.$select.'>'
+              .$entry.'</option>'."\n";
+           }
       }
 
-    $modes_names = array('smart', 'full', 'auto');
+    $modes_names = array('smart', 'full');
+    if($highlight) $modes_names[] = 'auto';
+
     $modes = array();
     foreach($modes_names as $item) $modes[] = $MOD_CODE2[strtoupper($item)];
     $mode_options = "";
@@ -115,6 +136,7 @@ if ( ( $whatis == 4) AND (!in_array(1, $groups)) ) {
             'WB_URL'       => WB_URL,
             'CONTENT'      => $content,
             'WHATIS'       => $whatis,
+            'HIGHLIGHTING' => $highlight ? "checked" : "",
             'WHATISSELECT' => $whatisselect,
             'TEXT_SAVE'    => $TEXT['SAVE'],
             'TEXT_CANCEL'  => $TEXT['CANCEL'],
