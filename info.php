@@ -2,10 +2,10 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.16
+ *      @version      2.2.17
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
- *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
+ *      @link         https://github.com/WebsiteBaker-modules/code2
  *      @license      GNU General Public License
  *      @platform     2.8.x
  *      @requirements PHP 5.2.x and higher
@@ -28,10 +28,10 @@ if(!defined('WB_PATH')) {
 $module_directory   = 'code2';
 $module_name        = 'Code2';
 $module_function    = 'page';
-$module_version     = '2.2.16';
+$module_version     = '2.2.17';
 $module_platform    = '2.8.x';
 $module_author      = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)';
 $module_license     = 'GNU General Public License';
 $module_description = 'This module allows you to execute PHP, HTML, Javascript commands and internal comments (<span style="color:#FF0000;">limit access to users you trust!</span>)';
-$module_home        = 'http://forum.websitebaker.org/index.php/topic,28581.0.html';
+$module_home        = 'https://github.com/WebsiteBaker-modules/code2';
 $module_guid        = '968243F3-EC4A-439D-8936-7D727D9EF8C2';

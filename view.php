@@ -2,10 +2,10 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.16
+ *      @version      2.2.17
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)
  *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
- *      @link         http://forum.websitebaker.org/index.php/topic,28581.0.html
+ *      @link         https://github.com/WebsiteBaker-modules/code2
  *      @license      GNU General Public License
  *      @platform     2.8.x
  *      @requirements PHP 5.2.x and higher
@@ -38,7 +38,7 @@ $get_content = $database->query($query);
 if (($get_content) && ($get_content->numRows() > 0)) {
     $fetch_content = $get_content->fetchRow( MYSQL_ASSOC );
 
-    $whatis = (int)($fetch_content['whatis'] % 10);
+    $whatis = (int)($fetch_content['whatis'] % 5);
 
     $content = $fetch_content['content'];
 

@@ -1,6 +1,10 @@
 
 /*
- *      2.2.16  2018-12-09      - add checkbox to disable highlighting for performance reasons
+ *      2.2.17  2018-12-12      - fix frontend error "unknown type", thanks to florian
+ *
+ *      2.2.16  2018-12-09      - add checkbox to disable highlighting for performance reasons,
+ *                                thanks to franky for suggesting this feature
+ *
  *      2.2.15  2018-10-10      - include template.inc if class Template is not available
  *
  *      2.2.14  2018-04-13      - fix brackets in the previous commit
