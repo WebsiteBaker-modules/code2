@@ -2,9 +2,9 @@
 /**
  *
  *      @module       Code2
- *      @version      2.2.17
+ *      @version      2.2.18
  *      @authors      Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)
- *      @copyright    (c) 2009 - 2018, Website Baker Org. e.V.
+ *      @copyright    (c) 2009 - 2020, Website Baker Org. e.V.
  *      @link         https://github.com/WebsiteBaker-modules/code2
  *      @license      GNU General Public License
  *      @platform     2.8.x
@@ -28,7 +28,7 @@ if(!defined('WB_PATH')) {
 $module_directory   = 'code2';
 $module_name        = 'Code2';
 $module_function    = 'page';
-$module_version     = '2.2.17';
+$module_version     = '2.2.18';
 $module_platform    = '2.8.x';
 $module_author      = 'Ryan Djurovich, minor changes by Chio Maisriml, websitbaker.at, Search-Enhancement by thorn, Mode-Select by Aldus, FTAN Support, syntax highlighting and current maintenance  by Martin Hecht (mrbaseman)';
 $module_license     = 'GNU General Public License';
